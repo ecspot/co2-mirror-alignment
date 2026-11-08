@@ -4,7 +4,7 @@ A browser-only tool for aligning a CO₂ laser's three-screw mirror mount. Map t
 
 ## Run it
 
-Download **mirrorline.html** and open it in a modern browser. The file contains all HTML, CSS, and JavaScript. It works offline with no server, dependencies, installation, or account.
+Download **mirrorline.html** and open it in a modern browser. The file contains all HTML, CSS, and JavaScript. It works offline with no server, dependencies, installation, or account. **Node.js is not required to use the page or calibrate your mirrors.** All calibration, alignment calculations, and session saving happen in your browser.
 
 ## Features
 
@@ -40,17 +40,19 @@ Use the machine's approved safeguards, specified eye protection, marking method,
 
 Browser storage for local HTML files varies. Export JSON backups to preserve sessions across file moves, browsers, or cleared storage. Session files are private to the user and should not be committed.
 
-## Contributing and checking changes
+## For developers: optional code checks
+
+This section is only for contributors who edit the JavaScript calculation code. **Skip it when using Mirrorline to calibrate or align your laser.** Calibration is performed through the page's **Calibrate** screen.
 
 The application source lives directly in **mirrorline.html**. Edit that file; no build step is required. Keep it self-contained and offline-capable.
 
-With Node.js installed, run the numerical checks:
+Contributors can optionally use Node.js to check the calculation code after making changes. From the repository folder, run:
 
 ```sh
 node tests/core.cjs
 ```
 
-Checks cover coupled responses, signed calibration, three-screw minimum-norm solutions, limited control directions, maximum steps, repeated correction, and 1,000 numerical cases. They do not validate hardware behavior. Before submitting interface changes, manually check mouse/touch plotting, keyboard input, calibration, saved-session reload, and JSON export/import in a browser.
+Checks cover coupled responses, signed calibration, three-screw minimum-norm solutions, limited control directions, maximum steps, repeated correction, and 1,000 numerical cases. These are software tests; they do not calibrate your mirror, change your saved calibration, or validate hardware behavior. Before submitting interface changes, manually check mouse/touch plotting, keyboard input, calibration, saved-session reload, and JSON export/import in a browser.
 
 ## License
 
